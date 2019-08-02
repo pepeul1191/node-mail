@@ -1,15 +1,4 @@
-var nodemailer = require('nodemailer'); 
-
-var transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: 'xyz@gmail.com',
-    pass: 'xyz'
-  }
-});
+var mail = require('./client'); 
 
 var mailOptions = {
   from: 'demo@softweb.pe',
@@ -21,7 +10,7 @@ var mailOptions = {
 async function enviar(){
   var response = '';
   try{
-    response = await transporter.sendMail(mailOptions);
+    response = await mail.sendMail(mailOptions);
   }catch(err){
     response = err;
   }
