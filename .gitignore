@@ -16,4 +16,4 @@ dist
 .DS_Store
 *.ods#
 public/uploads
-clients.js
+client.js
