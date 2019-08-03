@@ -9,7 +9,7 @@ app.use(express.static('public'));
 app.get('/sails/wellcome', function (req, res) {
   // query ?link=http://localhost:3000/activate/98173491832741/ab123123123123
   var data = {
-    name: 'sails',
+    name: 'Pepe',
     title: 'Hola mundo',
     link: req.query.link, 
   };
