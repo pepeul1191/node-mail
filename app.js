@@ -4,13 +4,16 @@ const express = require('express');
 const app = express();
 const mail = require('./client'); 
 
+app.use(express.static('public'));
+
 app.get('/sails/wellcome', function (req, res) {
-  // query
+  // query ?link=http://localhost:3000/activate/98173491832741/ab123123123123
   var data = {
     name: 'sails',
     title: 'Hola mundo',
+    link: req.query.link, 
   };
-  var template = fs.readFileSync('./templates/sails/demo.ejs', 'utf-8');
+  var template = fs.readFileSync('./templates/sails/welcome.ejs', 'utf-8');
   var html = ejs.render(template, data)
   res.send(html);
 });
