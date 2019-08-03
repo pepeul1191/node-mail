@@ -7,13 +7,24 @@ const mail = require('./client');
 app.use(express.static('public'));
 
 app.get('/sails/wellcome', function (req, res) {
-  // query ?link=http://localhost:3000/activate/98173491832741/ab123123123123
+  // query -> ?link=http://localhost:3000/activate/98173491832741/ab123123123123&name=pepe
   var data = {
-    name: 'Pepe',
-    title: 'Hola mundo',
+    title: 'Bienvenido',
+    name: req.query.name,
     link: req.query.link, 
   };
   var template = fs.readFileSync('./templates/sails/welcome.ejs', 'utf-8');
+  var html = ejs.render(template, data)
+  res.send(html);
+});
+
+app.get('/sails/reset', function (req, res) {
+  // query -> ?link=http://localhost:3000/reset/98173491832741/ab123123123123
+  var data = {
+    title: 'Resetear Contraseña',
+    link: req.query.link, 
+  };
+  var template = fs.readFileSync('./templates/sails/reset.ejs', 'utf-8');
   var html = ejs.render(template, data)
   res.send(html);
 });
